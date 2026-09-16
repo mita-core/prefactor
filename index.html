@@ -263,16 +263,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,d
 .nav-item.on .nav-t i{rotate:225deg;translate:0 1px}
 
 .mega{
-  position:fixed;top:calc(var(--hh) + 10px);left:0;z-index:95;
+  position:fixed;top:var(--hh);left:0;z-index:95;
   width:max-content;max-width:min(1180px,calc(100vw - 32px));
-  padding:26px;border-radius:var(--r-xl);
+  padding:20px;border-radius:var(--r-xl);
   background:rgba(10,10,13,.93);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
   border:1px solid var(--bdr-2);box-shadow:0 40px 90px -30px rgba(0,0,0,.9);
   display:none;
 }
 .nav-item.on .mega{display:block}
-/* bridges the gap between trigger and panel so hover doesn't drop */
-.mega::before{content:"";position:absolute;left:0;right:0;top:-18px;height:18px}
+/* Continuous hover area from trigger to panel. */
+.mega::before{content:"";position:absolute;left:0;right:0;top:-36px;height:36px}
 .mega-grid{display:grid;gap:26px 34px}
 .mega-col b{display:flex;align-items:center;gap:9px;font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--t3);font-weight:400;margin-bottom:12px}
 .mega-col a{display:block;padding:6px 10px;margin-left:-10px;border-radius:9px;font-size:15px;color:var(--t2);transition:color .15s,background .15s}
@@ -280,9 +280,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,d
 .mega-col a.all{color:var(--g-c)}
 
 .hdr-r{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex:none}
-.srch{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 8px 0 12px;border:1px solid var(--bdr);border-radius:999px;background:rgba(255,255,255,.035);color:var(--t3);font-size:15px;cursor:pointer}
+.srch{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border:1px solid var(--bdr);border-radius:999px;background:rgba(255,255,255,.035);color:var(--t2);cursor:pointer}
 .srch:hover{border-color:var(--bdr-2);color:var(--t2)}
-.srch kbd{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--t3);border:1px solid var(--bdr);border-radius:5px;padding:2px 5px;background:rgba(255,255,255,.04)}
 .burger{display:none;width:40px;height:40px;border-radius:13px;border:1px solid var(--bdr);background:rgba(255,255,255,.04);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
 .burger i{width:16px;height:1.5px;background:#fff;border-radius:2px;display:block}
 
@@ -589,6 +588,7 @@ footer{border-top:1px solid var(--bdr);background:var(--bg-2);padding:clamp(54px
   .stage-in{border-radius:25px}
   .src .sd{flex-basis:100%}
 }
+@media(max-width:420px){.hdr-r .btn-w{display:none}}
 /* ── reveal on enter ──────────────────────────────────────────────
    Only active when JS runs (html.js), so the page is fully readable
    without it. The class is removed once the transition finishes, so
@@ -622,60 +622,44 @@ html.js .rv.rv-in{opacity:1;transform:none}
       <nav class="nav" aria-label="Primary navigation">
         <div class="nav-item" data-nav>
           <button class="nav-t" type="button" aria-expanded="false">Platform <i></i></button>
-          <div class="mega">
-            <div class="mega-grid" style="grid-template-columns:repeat(4,minmax(180px,1fr))">
-              <div class="mega-col">
-                <b>Product</b>
-                <a href="https://prefactor.tech/platform">Product</a><a href="https://prefactor.tech/changelog">Changelog</a><a href="https://prefactor.tech/integrations">Integrations</a><a href="https://prefactor.tech/open-source-evals">Open-source evals</a>
-              </div>
-              <div class="mega-col">
-                <b>Explore</b>
-                <a href="https://prefactor.tech/compare">Compare</a><a href="https://prefactor.tech/product/case-studies/support-bot">Case studies</a>
-              </div>
-              <div class="mega-col">
-                <b>Compare</b>
-                <a href="https://prefactor.tech/compare">All comparisons</a><a href="https://prefactor.tech/compare/build-vs-buy">Build vs Buy</a><a href="https://prefactor.tech/compare/vs-security-platforms">vs Security Platforms</a><a href="https://prefactor.tech/compare/vs-observability">vs Observability</a><a href="https://prefactor.tech/compare/vs-governance-platforms">vs Governance</a><a href="https://prefactor.tech/compare/vs-agent-platforms">vs Agent Platforms</a>
-              </div>
-              <div class="mega-col">
-                <b>Case studies</b>
-                <a href="https://prefactor.tech/product/case-studies/support-bot">Support Bot</a><a href="https://prefactor.tech/product/case-studies/voice-customer-support">Voice Customer Support</a><a href="https://prefactor.tech/product/case-studies/internal-agents">Internal Agents</a>
-              </div>
+          <div class="mega"><div class="mega-grid" style="grid-template-columns:minmax(210px,1fr)">
+            <div class="mega-col"><b>Platform</b>
+              <a href="https://prefactor.tech/platform">Product</a>
+              <a href="https://prefactor.tech/integrations">Integrations</a>
+              <a href="https://prefactor.tech/open-source-evals">Open-source evals</a>
+              <a href="https://prefactor.tech/changelog">Changelog</a>
             </div>
-          </div>
+          </div></div>
         </div>
         <div class="nav-item" data-nav>
           <button class="nav-t" type="button" aria-expanded="false">Solutions <i></i></button>
-          <div class="mega">
-            <div class="mega-grid" style="grid-template-columns:repeat(5,minmax(168px,1fr))">
-              <div class="mega-col">
-                <b>Browse solutions</b>
-                <a href="https://prefactor.tech/problems">Problems</a><a href="https://prefactor.tech/industries">Industries</a><a href="https://prefactor.tech/solutions">Roles</a><a href="https://prefactor.tech/compliance">Frameworks</a>
-              </div>
-              <div class="mega-col">
-                <b>Problems we solve</b>
-                <a href="https://prefactor.tech/problems/hidden-failures">Hidden Failures</a><a href="https://prefactor.tech/problems/manual-evaluation-doesnt-scale">Manual Evaluation</a><a href="https://prefactor.tech/problems/stuck-at-poc">Stuck at POC</a><a href="https://prefactor.tech/problems/data-leakage">Data Leakage</a><a href="https://prefactor.tech/problems/runaway-agent-costs">Runaway Costs</a><a href="https://prefactor.tech/problems/no-kill-switch">No Kill Switch</a><a href="https://prefactor.tech/problems" class="all">View all problems →</a>
-              </div>
-              <div class="mega-col">
-                <b>Industries</b>
-                <a href="https://prefactor.tech/industries/banking">Banking</a><a href="https://prefactor.tech/industries/legal">Legal</a><a href="https://prefactor.tech/industries/manufacturing">Manufacturing</a><a href="https://prefactor.tech/industries/retail-ecommerce">Retail &amp; Ecommerce</a><a href="https://prefactor.tech/industries/telecommunications">Telecommunications</a><a href="https://prefactor.tech/industries" class="all">View all industries →</a>
-              </div>
-              <div class="mega-col">
-                <b>Roles</b>
-                <a href="https://prefactor.tech/solutions/developers">Developers</a><a href="https://prefactor.tech/solutions/ai-product">Product</a><a href="https://prefactor.tech/solutions/head-of-ai">Head of AI</a><a href="https://prefactor.tech/solutions/security-governance">Security &amp; Governance</a><a href="https://prefactor.tech/solutions/founders">Founders</a>
-              </div>
-              <div class="mega-col">
-                <b>Frameworks</b>
-                <a href="https://prefactor.tech/compliance/eu-ai-act">EU AI Act</a><a href="https://prefactor.tech/compliance/gdpr">GDPR</a><a href="https://prefactor.tech/compliance/iso-42001">ISO 42001</a><a href="https://prefactor.tech/compliance/nist-ai-rmf">NIST AI RMF</a><a href="https://prefactor.tech/compliance/soc-2">SOC 2</a><a href="https://prefactor.tech/compliance/iso-27001">ISO 27001</a><a href="https://prefactor.tech/compliance/hipaa">HIPAA</a><a href="https://prefactor.tech/compliance/owasp-llm-top-10">OWASP LLM Top 10</a><a href="https://prefactor.tech/compliance" class="all">View all frameworks →</a>
-              </div>
+          <div class="mega"><div class="mega-grid" style="grid-template-columns:minmax(210px,1fr)">
+            <div class="mega-col"><b>Solutions</b>
+              <a href="https://prefactor.tech/solutions">All solutions</a>
+              <a href="https://prefactor.tech/problems">Problems</a>
+              <a href="https://prefactor.tech/industries">Industries</a>
+              <a href="https://prefactor.tech/compliance">Frameworks</a>
             </div>
-          </div>
+          </div></div>
         </div>
-
+        <div class="nav-item" data-nav>
+          <button class="nav-t" type="button" aria-expanded="false">Resources <i></i></button>
+          <div class="mega"><div class="mega-grid" style="grid-template-columns:minmax(210px,1fr)">
+            <div class="mega-col"><b>Resources</b>
+              <a href="https://prefactor.tech/blog">Blog</a>
+              <a href="https://prefactor.tech/tools">Free tools</a>
+              <a href="https://prefactor.tech/glossary">Glossary</a>
+              <a href="https://prefactor.tech/agent-risk-audit">Agent Risk Audit</a>
+            </div>
+          </div></div>
+        </div>
+        <a href="https://prefactor.tech/evals">Evals Hub</a>
         <a href="https://prefactor.tech/pricing">Pricing</a>
       </nav>
     </div>
 
     <div class="hdr-r">
+      <button class="srch" id="srch" type="button" aria-label="Search" title="Search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg></button>
       <a class="btn btn-q" href="https://app.prefactorai.com/login">Log in</a>
       <a class="btn btn-w" href="https://app.prefactorai.com">Get started — free</a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
@@ -686,16 +670,24 @@ html.js .rv.rv-in{opacity:1;transform:none}
 <!-- mobile drawer -->
 <nav class="drawer" id="drawer" aria-label="Mobile navigation">
   <div class="dr-sec"><button type="button" aria-expanded="false">Platform <span>+</span></button><div class="dr-body">
-    <b>Product</b><a href="https://prefactor.tech/platform">Product</a><a href="https://prefactor.tech/changelog">Changelog</a><a href="https://prefactor.tech/integrations">Integrations</a><a href="https://prefactor.tech/open-source-evals">Open-source evals</a>
-    <b>Compare</b><a href="https://prefactor.tech/compare">All comparisons</a><a href="https://prefactor.tech/compare/build-vs-buy">Build vs Buy</a><a href="https://prefactor.tech/compare/vs-security-platforms">vs Security Platforms</a><a href="https://prefactor.tech/compare/vs-observability">vs Observability</a><a href="https://prefactor.tech/compare/vs-governance-platforms">vs Governance</a><a href="https://prefactor.tech/compare/vs-agent-platforms">vs Agent Platforms</a>
-    <b>Case studies</b><a href="https://prefactor.tech/product/case-studies/support-bot">Support Bot</a><a href="https://prefactor.tech/product/case-studies/voice-customer-support">Voice Customer Support</a><a href="https://prefactor.tech/product/case-studies/internal-agents">Internal Agents</a>
+    <a href="https://prefactor.tech/platform">Product</a>
+    <a href="https://prefactor.tech/integrations">Integrations</a>
+    <a href="https://prefactor.tech/open-source-evals">Open-source evals</a>
+    <a href="https://prefactor.tech/changelog">Changelog</a>
   </div></div>
   <div class="dr-sec"><button type="button" aria-expanded="false">Solutions <span>+</span></button><div class="dr-body">
-    <b>Problems</b><a href="https://prefactor.tech/problems/hidden-failures">Hidden Failures</a><a href="https://prefactor.tech/problems/manual-evaluation-doesnt-scale">Manual Evaluation</a><a href="https://prefactor.tech/problems/stuck-at-poc">Stuck at POC</a><a href="https://prefactor.tech/problems/data-leakage">Data Leakage</a><a href="https://prefactor.tech/problems/runaway-agent-costs">Runaway Costs</a><a href="https://prefactor.tech/problems/no-kill-switch">No Kill Switch</a>
-    <b>Industries</b><a href="https://prefactor.tech/industries/banking">Banking</a><a href="https://prefactor.tech/industries/legal">Legal</a><a href="https://prefactor.tech/industries/manufacturing">Manufacturing</a><a href="https://prefactor.tech/industries/retail-ecommerce">Retail &amp; Ecommerce</a><a href="https://prefactor.tech/industries/telecommunications">Telecommunications</a>
-    <b>Roles</b><a href="https://prefactor.tech/solutions/developers">Developers</a><a href="https://prefactor.tech/platform">Product</a><a href="https://prefactor.tech/solutions/head-of-ai">Head of AI</a><a href="https://prefactor.tech/solutions/security-governance">Security &amp; Governance</a><a href="https://prefactor.tech/solutions/founders">Founders</a>
-    <b>Frameworks</b><a href="https://prefactor.tech/compliance/eu-ai-act">EU AI Act</a><a href="https://prefactor.tech/compliance/gdpr">GDPR</a><a href="https://prefactor.tech/compliance/iso-42001">ISO 42001</a><a href="https://prefactor.tech/compliance/nist-ai-rmf">NIST AI RMF</a><a href="https://prefactor.tech/compliance/soc-2">SOC 2</a><a href="https://prefactor.tech/compliance/iso-27001">ISO 27001</a><a href="https://prefactor.tech/compliance/hipaa">HIPAA</a><a href="https://prefactor.tech/compliance/owasp-llm-top-10">OWASP LLM Top 10</a>
+    <a href="https://prefactor.tech/solutions">All solutions</a>
+    <a href="https://prefactor.tech/problems">Problems</a>
+    <a href="https://prefactor.tech/industries">Industries</a>
+    <a href="https://prefactor.tech/compliance">Frameworks</a>
   </div></div>
+  <div class="dr-sec"><button type="button" aria-expanded="false">Resources <span>+</span></button><div class="dr-body">
+    <a href="https://prefactor.tech/blog">Blog</a>
+    <a href="https://prefactor.tech/tools">Free tools</a>
+    <a href="https://prefactor.tech/glossary">Glossary</a>
+    <a href="https://prefactor.tech/agent-risk-audit">Agent Risk Audit</a>
+  </div></div>
+  <a class="dr-link" href="https://prefactor.tech/evals">Evals Hub</a>
   <a class="dr-link" href="https://prefactor.tech/pricing">Pricing</a>
   <div style="display:flex;gap:10px;margin-top:28px">
     <a class="btn btn-g" href="https://app.prefactorai.com/login" style="flex:1">Log in</a>
@@ -1205,8 +1197,8 @@ span.<span class="fn">score</span>({ grounded: <span class="nu">true</span> }); 
       </div>
       <div class="f-c rv"><b>Company</b><a href="https://prefactor.tech/about-us">About Us</a><a href="https://prefactor.tech/community">News &amp; Events</a><a href="https://prefactor.tech/contact">Contact Us</a><a href="https://prefactor.tech/careers">Careers</a><a href="https://prefactor.tech/partnerships">Partnerships</a><a href="https://www.producthunt.com/products/prefactor?embed=true&amp;utm_source=badge-top-post-badge&amp;utm_medium=badge&amp;utm_campaign=badge-prefactor" target="_blank" rel="noopener noreferrer">Product of the Day ↗</a></div>
       <div class="f-c rv"><b>Product</b><a href="https://prefactor.tech/platform">Platform</a><a href="https://prefactor.tech/integrations">Integrations</a><a href="https://prefactor.tech/open-source-evals">Open-source evals</a><a href="https://prefactor.tech/pricing">Pricing</a><a href="https://prefactor.tech/compare">Compare</a><a href="https://prefactor.tech/product/case-studies/support-bot">Support Bot case study</a><a href="https://prefactor.tech/product/case-studies/voice-customer-support">Voice Support case study</a><a href="https://prefactor.tech/product/case-studies/internal-agents">Internal Agents case study</a><a href="https://prefactor.tech/changelog">Changelog</a><a href="https://docs.prefactor.ai">Docs</a></div>
-      <div class="f-c rv"><b>Solutions</b><a href="https://prefactor.tech/solutions">All solutions</a><a href="https://prefactor.tech/solutions/healthcare">Healthcare</a><a href="https://prefactor.tech/solutions/insurance">Insurance</a><a href="https://prefactor.tech/solutions/developers">For Developers</a><a href="https://prefactor.tech/solutions/head-of-ai">For Heads of AI</a><a href="https://prefactor.tech/solutions/ai-product">For AI Product</a><a href="https://prefactor.tech/solutions/security-governance">Security &amp; Governance</a><a href="https://prefactor.tech/solutions/founders">For Founders</a></div>
-      <div class="f-c rv"><b>Resources</b><a href="https://prefactor.tech/agent-risk-audit">Agent Risk Audit</a><a href="https://prefactor.tech/blog">Blog</a><a href="https://prefactor.tech/download-agentic-contract-whitepaper">Agentic Contract Whitepaper</a><a href="https://prefactor.tech/download-mcp-whitepaper">MCP Whitepaper</a><a href="https://prefactor.tech/glossary">Glossary</a><a href="https://prefactor.tech/tools">Free Tools</a><a href="https://prefactor.tech/evals">Evals Hub</a><a href="https://prefactor.tech/security">Security</a><button class="srch" id="srch" type="button">Search <kbd>⌘K</kbd></button></div>
+      <div class="f-c rv"><b>Solutions</b><a href="https://prefactor.tech/solutions">All solutions</a><a href="https://prefactor.tech/problems">Problems</a><a href="https://prefactor.tech/industries">Industries</a><a href="https://prefactor.tech/compliance">Frameworks</a><a href="https://prefactor.tech/solutions/healthcare">Healthcare</a><a href="https://prefactor.tech/solutions/insurance">Insurance</a><a href="https://prefactor.tech/solutions/developers">For Developers</a><a href="https://prefactor.tech/solutions/head-of-ai">For Heads of AI</a><a href="https://prefactor.tech/solutions/ai-product">For AI Product</a><a href="https://prefactor.tech/solutions/security-governance">Security &amp; Governance</a><a href="https://prefactor.tech/solutions/founders">For Founders</a></div>
+      <div class="f-c rv"><b>Resources</b><a href="https://prefactor.tech/agent-risk-audit">Agent Risk Audit</a><a href="https://prefactor.tech/blog">Blog</a><a href="https://prefactor.tech/download-agentic-contract-whitepaper">Agentic Contract Whitepaper</a><a href="https://prefactor.tech/download-mcp-whitepaper">MCP Whitepaper</a><a href="https://prefactor.tech/glossary">Glossary</a><a href="https://prefactor.tech/tools">Free Tools</a><a href="https://prefactor.tech/evals">Evals Hub</a><a href="https://prefactor.tech/security">Security</a></div>
     </div>
     <div class="f-bot">
       <span>© 2026 Prefactor Pty Ltd</span>
@@ -1233,7 +1225,7 @@ span.<span class="fn">score</span>({ grounded: <span class="nu">true</span> }); 
     var w = zero.width, r = item.getBoundingClientRect();
     var wantL = r.left + r.width / 2 - w / 2;
     wantL = Math.min(Math.max(pad, wantL), window.innerWidth - w - pad);
-    var wantT = document.querySelector('.hdr').getBoundingClientRect().bottom + 10;
+    var wantT = document.querySelector('.hdr').getBoundingClientRect().bottom;
     m.style.left = Math.round(wantL - zero.left) + 'px';
     m.style.top  = Math.round(wantT - zero.top) + 'px';
   }
