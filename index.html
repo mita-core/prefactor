@@ -278,6 +278,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,d
 .mega-col a{display:block;padding:6px 10px;margin-left:-10px;border-radius:9px;font-size:15px;color:var(--t2);transition:color .15s,background .15s}
 .mega-col a:hover{color:#fff;background:rgba(255,255,255,.06)}
 .mega-col a.all{color:var(--g-c)}
+.menu-root{width:250px}
+.menu-root>b:not(:first-child){border-top:1px solid var(--bdr);padding-top:16px;margin-top:18px}
+.menu-group{position:relative}
+.menu-group summary{display:flex;align-items:center;justify-content:space-between;padding:6px 10px;margin-left:-10px;border-radius:9px;list-style:none;font-size:15px;color:var(--t2);cursor:pointer}
+.menu-group summary::-webkit-details-marker{display:none}
+.menu-group summary::after{content:"";width:6px;height:6px;border-top:1.4px solid currentColor;border-right:1.4px solid currentColor;rotate:45deg;opacity:.65}
+.menu-group[open]>summary,.menu-group summary:hover{color:#fff;background:rgba(255,255,255,.06)}
+.menu-sub{position:absolute;left:calc(100% - 1px);top:-20px;z-index:2;width:330px;max-height:calc(100vh - var(--hh) - 24px);overflow-y:auto;padding:20px;border:1px solid var(--bdr-2);border-radius:var(--r-xl);background:rgba(10,10,13,.97);box-shadow:0 40px 90px -30px rgba(0,0,0,.9)}
+.menu-sub b:not(:first-child){border-top:1px solid var(--bdr);padding-top:12px;margin-top:18px}
 
 .hdr-r{grid-column:3;display:flex;align-items:center;justify-content:flex-end;gap:7px;flex:none}
 .srch{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border:1px solid var(--bdr);border-radius:999px;background:rgba(255,255,255,.035);color:var(--t2);cursor:pointer}
@@ -308,6 +317,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,d
 .dr-sec.on .dr-body{display:block}
 .dr-body b{display:block;font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3);margin:14px 0 8px;font-weight:400}
 .dr-body a{display:block;padding:7px 0;font-size:17px;color:var(--t2)}
+.dr-sub summary{display:flex;align-items:center;justify-content:space-between;padding:7px 0;list-style:none;font-size:17px;color:var(--t2);cursor:pointer}
+.dr-sub summary::-webkit-details-marker{display:none}
+.dr-sub summary::after{content:"+";color:var(--g)}
+.dr-sub[open] summary::after{content:"–"}
+.dr-sub-links{padding:0 0 12px 14px;border-left:1px solid var(--bdr)}
 .dr-link{display:block;border-bottom:1px solid var(--bdr);padding:18px 0;font-family:"Inter Tight";font-size:20px;font-weight:500;letter-spacing:-.008em;line-height:1.3}
 
 /* ══════════ HERO ══════════ */
@@ -622,35 +636,43 @@ html.js .rv.rv-in{opacity:1;transform:none}
       <nav class="nav" aria-label="Primary navigation">
         <div class="nav-item" data-nav>
           <button class="nav-t" type="button" aria-expanded="false">Platform <i></i></button>
-          <div class="mega"><div class="mega-grid" style="grid-template-columns:minmax(210px,1fr)">
-            <div class="mega-col"><b>Platform</b>
-              <a href="https://prefactor.tech/platform">Product</a>
-              <a href="https://prefactor.tech/integrations">Integrations</a>
-              <a href="https://prefactor.tech/open-source-evals">Open-source evals</a>
-              <a href="https://prefactor.tech/changelog">Changelog</a>
-            </div>
+          <div class="mega"><div class="mega-col menu-root">
+          <b>Product</b>
+          <a href="https://prefactor.tech/platform">Product</a>
+          <a href="https://prefactor.tech/changelog">Changelog</a>
+          <a href="https://prefactor.tech/integrations">Integrations</a>
+          <a href="https://prefactor.tech/open-source-evals">Open-source evals</a>
+          <b>Explore</b>
+          <details class="menu-group"><summary>Compare</summary><div class="mega-col menu-sub"><b>Compare</b><a href="https://prefactor.tech/compare">All comparisons</a><a href="https://prefactor.tech/compare/build-vs-buy">Build vs Buy</a><a href="https://prefactor.tech/compare/vs-security-platforms">vs Security Platforms</a><a href="https://prefactor.tech/compare/vs-observability">vs Observability</a><a href="https://prefactor.tech/compare/vs-governance-platforms">vs Governance</a><a href="https://prefactor.tech/compare/vs-agent-platforms">vs Agent Platforms</a></div></details>
+          <details class="menu-group"><summary>Case studies</summary><div class="mega-col menu-sub"><b>Case studies</b><a href="https://prefactor.tech/product/case-studies/support-bot">Support Bot</a><a href="https://prefactor.tech/product/case-studies/voice-customer-support">Voice Customer Support</a><a href="https://prefactor.tech/product/case-studies/internal-agents">Internal Agents</a></div></details>
           </div></div>
         </div>
         <div class="nav-item" data-nav>
           <button class="nav-t" type="button" aria-expanded="false">Solutions <i></i></button>
-          <div class="mega"><div class="mega-grid" style="grid-template-columns:minmax(210px,1fr)">
-            <div class="mega-col"><b>Solutions</b>
-              <a href="https://prefactor.tech/solutions">All solutions</a>
-              <a href="https://prefactor.tech/problems">Problems</a>
-              <a href="https://prefactor.tech/industries">Industries</a>
-              <a href="https://prefactor.tech/compliance">Frameworks</a>
-            </div>
+          <div class="mega"><div class="mega-col menu-root">
+          <b>Browse solutions</b>
+          <details class="menu-group"><summary>Problems</summary><div class="mega-col menu-sub"><b>Problems</b><a href="https://prefactor.tech/problems">Problems</a><a href="https://prefactor.tech/problems/hidden-failures">Hidden Failures</a><a href="https://prefactor.tech/problems/manual-evaluation-doesnt-scale">Manual Evaluation</a><a href="https://prefactor.tech/problems/stuck-at-poc">Stuck at POC</a><a href="https://prefactor.tech/problems/data-leakage">Data Leakage</a><a href="https://prefactor.tech/problems/runaway-agent-costs">Runaway Costs</a><a href="https://prefactor.tech/problems/no-kill-switch">No Kill Switch</a><a href="https://prefactor.tech/problems" class="all">View all problems →</a></div></details>
+          <details class="menu-group"><summary>Industries</summary><div class="mega-col menu-sub"><b>Industries</b><a href="https://prefactor.tech/industries">Industries</a><a href="https://prefactor.tech/industries/banking">Banking</a><a href="https://prefactor.tech/industries/legal">Legal</a><a href="https://prefactor.tech/industries/manufacturing">Manufacturing</a><a href="https://prefactor.tech/industries/retail-ecommerce">Retail &amp; Ecommerce</a><a href="https://prefactor.tech/industries/telecommunications">Telecommunications</a><a href="https://prefactor.tech/industries" class="all">View all industries →</a></div></details>
+          <details class="menu-group"><summary>Roles</summary><div class="mega-col menu-sub"><b>Roles</b><a href="https://prefactor.tech/solutions">Roles</a><a href="https://prefactor.tech/solutions/developers">Developers</a><a href="https://prefactor.tech/solutions/ai-product">Product</a><a href="https://prefactor.tech/solutions/head-of-ai">Head of AI</a><a href="https://prefactor.tech/solutions/security-governance">Security &amp; Governance</a><a href="https://prefactor.tech/solutions/founders">Founders</a></div></details>
+          <details class="menu-group"><summary>Frameworks</summary><div class="mega-col menu-sub"><b>Frameworks</b><a href="https://prefactor.tech/compliance">Frameworks</a><a href="https://prefactor.tech/compliance/eu-ai-act">EU AI Act</a><a href="https://prefactor.tech/compliance/gdpr">GDPR</a><a href="https://prefactor.tech/compliance/iso-42001">ISO 42001</a><a href="https://prefactor.tech/compliance/nist-ai-rmf">NIST AI RMF</a><a href="https://prefactor.tech/compliance/soc-2">SOC 2</a><a href="https://prefactor.tech/compliance/iso-27001">ISO 27001</a><a href="https://prefactor.tech/compliance/hipaa">HIPAA</a><a href="https://prefactor.tech/compliance/owasp-llm-top-10">OWASP LLM Top 10</a><a href="https://prefactor.tech/compliance" class="all">View all frameworks →</a></div></details>
           </div></div>
         </div>
         <div class="nav-item" data-nav>
           <button class="nav-t" type="button" aria-expanded="false">Resources <i></i></button>
-          <div class="mega"><div class="mega-grid" style="grid-template-columns:minmax(210px,1fr)">
-            <div class="mega-col"><b>Resources</b>
-              <a href="https://prefactor.tech/blog">Blog</a>
-              <a href="https://prefactor.tech/tools">Free tools</a>
-              <a href="https://prefactor.tech/glossary">Glossary</a>
-              <a href="https://prefactor.tech/agent-risk-audit">Agent Risk Audit</a>
-            </div>
+          <div class="mega"><div class="mega-col menu-root">
+          <b>Learn</b>
+          <details class="menu-group"><summary>Agent Observability</summary><div class="mega-col menu-sub"><b>Agent Observability</b><a href="https://prefactor.tech/learn/what-is-ai-agent-observability">Agent Observability</a><a href="https://prefactor.tech/learn/what-is-ai-agent-observability">What is Agent Observability?</a><a href="https://prefactor.tech/learn/agent-monitoring">What is Agent Monitoring?</a><a href="https://prefactor.tech/learn/token-usage">Token Usage &amp; Cost</a><a href="https://prefactor.tech/learn/agent-analytics">Agent Analytics</a><a href="https://prefactor.tech/learn/what-is-agent-cost-attribution">Agent Cost Attribution</a><a href="https://prefactor.tech/learn/best-agent-observability-tools">Best Observability Tools</a></div></details>
+          <details class="menu-group"><summary>Agent Evaluation</summary><div class="mega-col menu-sub"><b>Agent Evaluation</b><a href="https://prefactor.tech/learn/agent-evaluation">Agent Evaluation</a><a href="https://prefactor.tech/learn/agent-evaluation">What is Agent Evaluation?</a><a href="https://prefactor.tech/learn/agent-evals">Agent Evals: A Practical Guide</a><a href="https://prefactor.tech/learn/llm-as-a-judge">What is LLM-as-a-Judge?</a><a href="https://prefactor.tech/learn/agent-evaluation-framework">Agent Evaluation Framework</a><a href="https://prefactor.tech/learn/ai-evaluation-tools">AI Evaluation Tools</a><a href="https://prefactor.tech/learn/rag-evaluation">RAG Evaluation</a><a href="https://prefactor.tech/learn/golden-datasets-for-agents">Golden Datasets for Agents</a><a href="https://prefactor.tech/learn/agent-quality-score">Agent Quality Score</a><a href="https://prefactor.tech/learn/agent-benchmarks">AI Agent Benchmarks</a><a href="https://prefactor.tech/learn/best-agent-evaluation-tools">Best AI Agent Evaluation Tools</a></div></details>
+          <details class="menu-group"><summary>Agent Optimization</summary><div class="mega-col menu-sub"><b>Agent Optimization</b><a href="https://prefactor.tech/learn/agent-optimization">Agent Optimization</a><a href="https://prefactor.tech/learn/agent-optimization">What is Agent Optimization?</a><a href="https://prefactor.tech/learn/prompt-optimization">Prompt Optimization</a><a href="https://prefactor.tech/learn/human-in-the-loop">Human-in-the-Loop</a><a href="https://prefactor.tech/learn/dspy">DSPy</a><a href="https://prefactor.tech/learn/eval-driven-development">Eval-Driven Development</a><a href="https://prefactor.tech/learn/fine-tuning-vs-prompting">Fine-Tuning vs Prompting</a><a href="https://prefactor.tech/learn/prompt-management">Prompt Management</a><a href="https://prefactor.tech/learn/self-improving-agents">Self-Improving Agents</a><a href="https://prefactor.tech/learn/agent-quality-loop">The Agent Quality Loop</a></div></details>
+          <details class="menu-group"><summary>Statistics</summary><div class="mega-col menu-sub"><b>Statistics</b><a href="https://prefactor.tech/learn/ai-agent-adoption-statistics">Statistics</a><a href="https://prefactor.tech/learn/ai-agent-adoption-statistics">AI Agent Adoption Statistics</a><a href="https://prefactor.tech/learn/ai-governance-compliance-statistics">AI Governance Statistics</a><a href="https://prefactor.tech/learn/ai-security-risk-statistics">AI Security &amp; Risk Statistics</a></div></details>
+          <details class="menu-group"><summary>Top platforms</summary><div class="mega-col menu-sub"><b>Top platforms</b><a href="https://prefactor.tech/learn/best-agent-observability-tools">Top platforms</a><a href="https://prefactor.tech/learn/best-agent-observability-tools">Best Observability Tools 2026</a><a href="https://prefactor.tech/learn/best-agent-evaluation-tools">Best AI Agent Evaluation Tools 2026</a><a href="https://prefactor.tech/learn/agentic-coding-tools">Best Agentic Coding Tools 2026</a></div></details>
+          <details class="menu-group"><summary>Featured &amp; free tools</summary><div class="mega-col menu-sub"><b>Featured &amp; free tools</b><a href="https://prefactor.tech/tools">Featured &amp; free tools</a><a href="https://prefactor.tech/tools">All free tools</a><a href="https://prefactor.tech/tools/llm-cost-calculator">LLM Token &amp; Cost Calculator</a><a href="https://prefactor.tech/tools/agent-reliability-grader">Agent Reliability Grader</a><a href="https://prefactor.tech/tools/prompt-injection-test">Prompt Injection Test</a><a href="https://prefactor.tech/tools/agent-roi-calculator">Agent ROI &amp; TCO Calculator</a><a href="https://prefactor.tech/tools/agent-evaluation-template">Agent Evaluation Template</a><b>Featured</b><a href="https://prefactor.tech/download-agentic-contract-whitepaper">Agentic Contract Whitepaper</a><a href="https://prefactor.tech/download-mcp-whitepaper">MCP Whitepaper</a><a href="https://prefactor.tech/agent-risk-audit">Agent Risk Consultation</a></div></details>
+          <details class="menu-group"><summary>Key Terms</summary><div class="mega-col menu-sub"><b>Key Terms</b><a href="https://prefactor.tech/glossary">Key Terms</a><a href="https://prefactor.tech/glossary">Glossary</a><a href="https://prefactor.tech/agent-types">Agent types</a><a href="https://prefactor.tech/ai-infra/mcp">AI infrastructure</a></div></details>
+          <a href="https://prefactor.tech/evals">Evals Hub</a>
+          <b>Company &amp; updates</b>
+          <a href="https://prefactor.tech/blog">Blog</a>
+          <a href="https://www.getreadyforagents.com/podcast">Podcast</a>
+          <details class="menu-group"><summary>Company</summary><div class="mega-col menu-sub"><b>Company</b><a href="https://prefactor.tech/about-us">Company</a><a href="https://prefactor.tech/about-us">About Us</a><a href="https://prefactor.tech/careers">Careers</a><a href="https://prefactor.tech/contact">Contact Us</a><a href="https://prefactor.tech/community">News &amp; Events</a><a href="https://prefactor.tech/partnerships">Partnerships</a><a href="https://join.slack.com/t/prefactor-community/shared_invite/zt-3uh6zo0rr-o_iFrujv~evtMstLTup2Lw">Slack Community</a><a href="https://prefactor.tech/evals">Evals Hub</a></div></details>
           </div></div>
         </div>
         <a href="https://prefactor.tech/evals">Evals Hub</a>
@@ -670,22 +692,36 @@ html.js .rv.rv-in{opacity:1;transform:none}
 <!-- mobile drawer -->
 <nav class="drawer" id="drawer" aria-label="Mobile navigation">
   <div class="dr-sec"><button type="button" aria-expanded="false">Platform <span>+</span></button><div class="dr-body">
+    <b>Product</b>
     <a href="https://prefactor.tech/platform">Product</a>
+    <a href="https://prefactor.tech/changelog">Changelog</a>
     <a href="https://prefactor.tech/integrations">Integrations</a>
     <a href="https://prefactor.tech/open-source-evals">Open-source evals</a>
-    <a href="https://prefactor.tech/changelog">Changelog</a>
+    <b>Explore</b>
+    <details class="dr-sub"><summary>Compare</summary><div class="dr-sub-links"><a href="https://prefactor.tech/compare">All comparisons</a><a href="https://prefactor.tech/compare/build-vs-buy">Build vs Buy</a><a href="https://prefactor.tech/compare/vs-security-platforms">vs Security Platforms</a><a href="https://prefactor.tech/compare/vs-observability">vs Observability</a><a href="https://prefactor.tech/compare/vs-governance-platforms">vs Governance</a><a href="https://prefactor.tech/compare/vs-agent-platforms">vs Agent Platforms</a></div></details>
+    <details class="dr-sub"><summary>Case studies</summary><div class="dr-sub-links"><a href="https://prefactor.tech/product/case-studies/support-bot">Support Bot</a><a href="https://prefactor.tech/product/case-studies/voice-customer-support">Voice Customer Support</a><a href="https://prefactor.tech/product/case-studies/internal-agents">Internal Agents</a></div></details>
   </div></div>
   <div class="dr-sec"><button type="button" aria-expanded="false">Solutions <span>+</span></button><div class="dr-body">
-    <a href="https://prefactor.tech/solutions">All solutions</a>
-    <a href="https://prefactor.tech/problems">Problems</a>
-    <a href="https://prefactor.tech/industries">Industries</a>
-    <a href="https://prefactor.tech/compliance">Frameworks</a>
+    <b>Browse solutions</b>
+    <details class="dr-sub"><summary>Problems</summary><div class="dr-sub-links"><a href="https://prefactor.tech/problems">Problems</a><a href="https://prefactor.tech/problems/hidden-failures">Hidden Failures</a><a href="https://prefactor.tech/problems/manual-evaluation-doesnt-scale">Manual Evaluation</a><a href="https://prefactor.tech/problems/stuck-at-poc">Stuck at POC</a><a href="https://prefactor.tech/problems/data-leakage">Data Leakage</a><a href="https://prefactor.tech/problems/runaway-agent-costs">Runaway Costs</a><a href="https://prefactor.tech/problems/no-kill-switch">No Kill Switch</a><a href="https://prefactor.tech/problems" class="all">View all problems →</a></div></details>
+    <details class="dr-sub"><summary>Industries</summary><div class="dr-sub-links"><a href="https://prefactor.tech/industries">Industries</a><a href="https://prefactor.tech/industries/banking">Banking</a><a href="https://prefactor.tech/industries/legal">Legal</a><a href="https://prefactor.tech/industries/manufacturing">Manufacturing</a><a href="https://prefactor.tech/industries/retail-ecommerce">Retail &amp; Ecommerce</a><a href="https://prefactor.tech/industries/telecommunications">Telecommunications</a><a href="https://prefactor.tech/industries" class="all">View all industries →</a></div></details>
+    <details class="dr-sub"><summary>Roles</summary><div class="dr-sub-links"><a href="https://prefactor.tech/solutions">Roles</a><a href="https://prefactor.tech/solutions/developers">Developers</a><a href="https://prefactor.tech/solutions/ai-product">Product</a><a href="https://prefactor.tech/solutions/head-of-ai">Head of AI</a><a href="https://prefactor.tech/solutions/security-governance">Security &amp; Governance</a><a href="https://prefactor.tech/solutions/founders">Founders</a></div></details>
+    <details class="dr-sub"><summary>Frameworks</summary><div class="dr-sub-links"><a href="https://prefactor.tech/compliance">Frameworks</a><a href="https://prefactor.tech/compliance/eu-ai-act">EU AI Act</a><a href="https://prefactor.tech/compliance/gdpr">GDPR</a><a href="https://prefactor.tech/compliance/iso-42001">ISO 42001</a><a href="https://prefactor.tech/compliance/nist-ai-rmf">NIST AI RMF</a><a href="https://prefactor.tech/compliance/soc-2">SOC 2</a><a href="https://prefactor.tech/compliance/iso-27001">ISO 27001</a><a href="https://prefactor.tech/compliance/hipaa">HIPAA</a><a href="https://prefactor.tech/compliance/owasp-llm-top-10">OWASP LLM Top 10</a><a href="https://prefactor.tech/compliance" class="all">View all frameworks →</a></div></details>
   </div></div>
   <div class="dr-sec"><button type="button" aria-expanded="false">Resources <span>+</span></button><div class="dr-body">
+    <b>Learn</b>
+    <details class="dr-sub"><summary>Agent Observability</summary><div class="dr-sub-links"><a href="https://prefactor.tech/learn/what-is-ai-agent-observability">Agent Observability</a><a href="https://prefactor.tech/learn/what-is-ai-agent-observability">What is Agent Observability?</a><a href="https://prefactor.tech/learn/agent-monitoring">What is Agent Monitoring?</a><a href="https://prefactor.tech/learn/token-usage">Token Usage &amp; Cost</a><a href="https://prefactor.tech/learn/agent-analytics">Agent Analytics</a><a href="https://prefactor.tech/learn/what-is-agent-cost-attribution">Agent Cost Attribution</a><a href="https://prefactor.tech/learn/best-agent-observability-tools">Best Observability Tools</a></div></details>
+    <details class="dr-sub"><summary>Agent Evaluation</summary><div class="dr-sub-links"><a href="https://prefactor.tech/learn/agent-evaluation">Agent Evaluation</a><a href="https://prefactor.tech/learn/agent-evaluation">What is Agent Evaluation?</a><a href="https://prefactor.tech/learn/agent-evals">Agent Evals: A Practical Guide</a><a href="https://prefactor.tech/learn/llm-as-a-judge">What is LLM-as-a-Judge?</a><a href="https://prefactor.tech/learn/agent-evaluation-framework">Agent Evaluation Framework</a><a href="https://prefactor.tech/learn/ai-evaluation-tools">AI Evaluation Tools</a><a href="https://prefactor.tech/learn/rag-evaluation">RAG Evaluation</a><a href="https://prefactor.tech/learn/golden-datasets-for-agents">Golden Datasets for Agents</a><a href="https://prefactor.tech/learn/agent-quality-score">Agent Quality Score</a><a href="https://prefactor.tech/learn/agent-benchmarks">AI Agent Benchmarks</a><a href="https://prefactor.tech/learn/best-agent-evaluation-tools">Best AI Agent Evaluation Tools</a></div></details>
+    <details class="dr-sub"><summary>Agent Optimization</summary><div class="dr-sub-links"><a href="https://prefactor.tech/learn/agent-optimization">Agent Optimization</a><a href="https://prefactor.tech/learn/agent-optimization">What is Agent Optimization?</a><a href="https://prefactor.tech/learn/prompt-optimization">Prompt Optimization</a><a href="https://prefactor.tech/learn/human-in-the-loop">Human-in-the-Loop</a><a href="https://prefactor.tech/learn/dspy">DSPy</a><a href="https://prefactor.tech/learn/eval-driven-development">Eval-Driven Development</a><a href="https://prefactor.tech/learn/fine-tuning-vs-prompting">Fine-Tuning vs Prompting</a><a href="https://prefactor.tech/learn/prompt-management">Prompt Management</a><a href="https://prefactor.tech/learn/self-improving-agents">Self-Improving Agents</a><a href="https://prefactor.tech/learn/agent-quality-loop">The Agent Quality Loop</a></div></details>
+    <details class="dr-sub"><summary>Statistics</summary><div class="dr-sub-links"><a href="https://prefactor.tech/learn/ai-agent-adoption-statistics">Statistics</a><a href="https://prefactor.tech/learn/ai-agent-adoption-statistics">AI Agent Adoption Statistics</a><a href="https://prefactor.tech/learn/ai-governance-compliance-statistics">AI Governance Statistics</a><a href="https://prefactor.tech/learn/ai-security-risk-statistics">AI Security &amp; Risk Statistics</a></div></details>
+    <details class="dr-sub"><summary>Top platforms</summary><div class="dr-sub-links"><a href="https://prefactor.tech/learn/best-agent-observability-tools">Top platforms</a><a href="https://prefactor.tech/learn/best-agent-observability-tools">Best Observability Tools 2026</a><a href="https://prefactor.tech/learn/best-agent-evaluation-tools">Best AI Agent Evaluation Tools 2026</a><a href="https://prefactor.tech/learn/agentic-coding-tools">Best Agentic Coding Tools 2026</a></div></details>
+    <details class="dr-sub"><summary>Featured &amp; free tools</summary><div class="dr-sub-links"><a href="https://prefactor.tech/tools">Featured &amp; free tools</a><a href="https://prefactor.tech/tools">All free tools</a><a href="https://prefactor.tech/tools/llm-cost-calculator">LLM Token &amp; Cost Calculator</a><a href="https://prefactor.tech/tools/agent-reliability-grader">Agent Reliability Grader</a><a href="https://prefactor.tech/tools/prompt-injection-test">Prompt Injection Test</a><a href="https://prefactor.tech/tools/agent-roi-calculator">Agent ROI &amp; TCO Calculator</a><a href="https://prefactor.tech/tools/agent-evaluation-template">Agent Evaluation Template</a><b>Featured</b><a href="https://prefactor.tech/download-agentic-contract-whitepaper">Agentic Contract Whitepaper</a><a href="https://prefactor.tech/download-mcp-whitepaper">MCP Whitepaper</a><a href="https://prefactor.tech/agent-risk-audit">Agent Risk Consultation</a></div></details>
+    <details class="dr-sub"><summary>Key Terms</summary><div class="dr-sub-links"><a href="https://prefactor.tech/glossary">Key Terms</a><a href="https://prefactor.tech/glossary">Glossary</a><a href="https://prefactor.tech/agent-types">Agent types</a><a href="https://prefactor.tech/ai-infra/mcp">AI infrastructure</a></div></details>
+    <a href="https://prefactor.tech/evals">Evals Hub</a>
+    <b>Company &amp; updates</b>
     <a href="https://prefactor.tech/blog">Blog</a>
-    <a href="https://prefactor.tech/tools">Free tools</a>
-    <a href="https://prefactor.tech/glossary">Glossary</a>
-    <a href="https://prefactor.tech/agent-risk-audit">Agent Risk Audit</a>
+    <a href="https://www.getreadyforagents.com/podcast">Podcast</a>
+    <details class="dr-sub"><summary>Company</summary><div class="dr-sub-links"><a href="https://prefactor.tech/about-us">Company</a><a href="https://prefactor.tech/about-us">About Us</a><a href="https://prefactor.tech/careers">Careers</a><a href="https://prefactor.tech/contact">Contact Us</a><a href="https://prefactor.tech/community">News &amp; Events</a><a href="https://prefactor.tech/partnerships">Partnerships</a><a href="https://join.slack.com/t/prefactor-community/shared_invite/zt-3uh6zo0rr-o_iFrujv~evtMstLTup2Lw">Slack Community</a><a href="https://prefactor.tech/evals">Evals Hub</a></div></details>
   </div></div>
   <a class="dr-link" href="https://prefactor.tech/evals">Evals Hub</a>
   <a class="dr-link" href="https://prefactor.tech/pricing">Pricing</a>
@@ -1242,6 +1278,17 @@ span.<span class="fn">score</span>({ grounded: <span class="nu">true</span> }); 
       if(!isOpen) open(item, t); else t.setAttribute('aria-expanded','false');
     });
     t.addEventListener('focus', function(){ open(item, t); });
+  });
+  [].forEach.call(document.querySelectorAll('.menu-group'), function(group){
+    var sub = group.querySelector('.menu-sub');
+    group.addEventListener('mouseenter', function(){
+      group.open = true;
+      var row = group.getBoundingClientRect();
+      var top = Math.min(row.top - 20, window.innerHeight - 16 - sub.offsetHeight);
+      var minTop = document.querySelector('.hdr').getBoundingClientRect().bottom + 8;
+      sub.style.top = Math.round(Math.max(minTop, top) - row.top) + 'px';
+    });
+    group.addEventListener('mouseleave', function(){ group.open = false; });
   });
   window.addEventListener('resize', function(){
     items.forEach(function(i){ if(i.classList.contains('on')) place(i); });
